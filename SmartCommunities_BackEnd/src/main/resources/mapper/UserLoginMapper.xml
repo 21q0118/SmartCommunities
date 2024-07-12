@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ltbyz.practice_demo.wisdom_block.mapper.UserLoginMapper">
+    <select id="queryAll" resultType="ltbyz.practice_demo.wisdom_block.pojo.UserLogin">
+        select * from perlogin
+    </select>
+
+    <insert id="add" parameterType="ltbyz.practice_demo.wisdom_block.pojo.UserLogin">
+        insert into PerAccount values (#{phNum},#{password})
+    </insert>
+
+    <select id="queryOne" resultType="ltbyz.practice_demo.wisdom_block.pojo.UserLogin">
+        select * from perlogin where PHnum = #{PHnum} and Ppword = #{Ppword}
+    </select>
+
+    <select id="MLogin" resultType="ltbyz.practice_demo.wisdom_block.pojo.UserLogin">
+        select * from industry where PHnum = #{PHnum} and Ppword = #{Ppword}
+    </select>
+
+</mapper>

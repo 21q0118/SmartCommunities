@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ltbyz.practice_demo.wisdom_block.mapper.HouseHoldMapper">
+    <select id="queryByFId" resultType="ltbyz.practice_demo.wisdom_block.pojo.Household">
+        select * from Household where FID = #{FID}
+    </select>
+
+    <select id="queryByPh" resultType="ltbyz.practice_demo.wisdom_block.pojo.Household">
+        select * from Household where PHnum = #{phNum}
+    </select>
+
+    <select id="queryMaster" resultType="ltbyz.practice_demo.wisdom_block.pojo.Household">
+        select IDnum from Household where FID = #{FID} and PRole = '家主'
+    </select>
+
+    <update id="calFID">
+        update Household set FID = null where PHnum = #{phNum}
+    </update>
+
+    <update id="asFID">
+        update Household set FID = #{FID} where PHnum = #{phNum}
+    </update>
+
+    <update id="asMas">
+        update Household set PRole = '家主' where PHnum = #{phNum}
+    </update>
+
+    <update id="calMas">
+        update Household set PRole = '家庭成员' where PHnum = #{phNum}
+    </update>
+    
+    <insert id="add" parameterType="ltbyz.practice_demo.wisdom_block.pojo.Household">
+        insert into Household (IDnum, PHnum, Sex, PName) values (#{IDnum}, #{PHnum}, #{Sex}, #{PName})
+    </insert>
+
+    <update id="alter" parameterType="ltbyz.practice_demo.wisdom_block.pojo.Household">
+        update Household set Birthday = #{Birthday}, PRole = #{PRole} where PHnum = #{PHnum}
+    </update>
+
+</mapper>

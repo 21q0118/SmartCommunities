@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ltbyz.practice_demo.wisdom_block.mapper.HouseMapper">
+    <select id="queryOne" resultType="ltbyz.practice_demo.wisdom_block.pojo.House">
+        select * from house where ComName = #{ComName} and BuildNum = #{BuildNum} and HouseNum = #{HouseNum}
+    </select>
+
+    <update id="bindH_C">
+        call carhouse (#{ComName},#{BuildNum},#{HouseNum},#{CarID})
+    </update>
+
+    <update id="calH_C">
+        call cancelCH (#{ComName},#{BuildNum},#{HouseNum},#{CarID})
+    </update>
+
+    <select id="queryByIDnum" resultType="ltbyz.practice_demo.wisdom_block.pojo.House">
+        select CarID from house where IDnum = #{IDnum}
+    </select>
+
+</mapper>
